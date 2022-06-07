@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock  %}
+
+    {% block  content%}
+    <div class="col-8">
+      {% for item in data%}
+      <div class="">
+          <div class="card-header">
+            <p>Категория: {{item.category}} Новость создана: {{item.update_at|date:"D d M Y"}}</p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p>{% if item.photo %}
+                <img src = "{{ item.photo.url }}" alt = "" width="600">
+                {% else %}
+                <p>Новость без фото</p>
+                {% endif %}
+            </p>
+            <p class="card-text">{{item.content}}</p>
+              <div class="container">
+                  <div class="row">
+                      <div class="col-6">
+                        <a href="{{item.get_absolute_url}}" class="btn btn-primary">Читать полностью</a>
+                      </div>
+                      <div class="col-6">
+                          <p class="text-center"> Просмотров: {{ item.views }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer text-muted">
+            {{item.creadet_at}}
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endblock  %}

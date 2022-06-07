@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ news.title|truncatechars:7 }}{% endblock  %}
+
+    {% block  content%}
+    <div class="col-md-8">
+      <div class="">
+          <div class="card-header">
+            <p>Категория: {{news.category}} Новость создана: {{news.update_at|date:"D d M Y"}}</p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{news.title}}</h5>
+            <p>{% if news.photo %}
+                <img src = "{{ news.photo.url }}" alt = "" width="600">
+                {% else %}
+                <p>Новость без фото</p>
+                {% endif %}
+            </p>
+            <p class="card-text">{{news.content}}</p>
+          </div>
+          <div class="card-footer text-muted">
+            {{news.creadet_at}}
+          </div>
+      </div>
+
+    </div>
+    {% endblock  %}

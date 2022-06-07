@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block  title%} {{ title }}{% endblock  %}
+{% block  content%}
+<h1>Добавление новости</h1>
+<form action="{% url 'add-news' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_fiels.errors }}
+    {{form.as_p }}
+
+    {% comment %}
+    <div class="form-group">
+    <label for="{{form.titile.id_for_label}}" class="form-label">Название</label>
+        {{form.title}}
+        <div class="invalid-feedback">
+            {{ form.title.errors}}
+        </div>
+    </div>
+    <div class="form-group mb-2">
+    <label for="{{form.content.id_for_label}}" class="form-label">Контент</label>
+        {{form.content}}
+        <div class="invalid-feedback">
+            {{ form.content.errors}}
+        </div>
+    </div>
+    <div class="form-group mb-2">
+    <label for="{{form.is_published.id_for_label}}" class="form-label">Опубликовано</label>
+        {{form.is_published}}
+        <div class="invalid-feedback">
+            {{ form.is_published.errors}}
+        </div>
+    </div>
+    <div class="form-group mb-2">
+    <label for="{{form.category.id_for_label}}" class="form-label">Категория</label>
+        {{form.category}}
+        <div class="invalid-feedback">
+            {{ form.category.errors}}
+        </div>
+    </div>
+    {% endcomment %}
+    <button type="submit" class="btn btn-primary btn-block">Добавить новость</button>
+</form>
+
+{% endblock  %}
+{% block  side_bar%}{% endblock  %}
